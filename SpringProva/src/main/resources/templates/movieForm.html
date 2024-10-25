@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${movie.movieId != null} ? 'Modifica Film' : 'Crea nuovo'"></h1>
+
+    <form th:action="@{/api/v1/movies}" th:object="${movie}" method="post">
+        <input type="hidden" id="id" th:field="*{movieId}">
+        <label>Titolo
+            <input type="text" id="title" th:field="*{title}">
+        </label>
+        <label>Regista
+            <input type="text" id="director" th:field="*{director}">
+        </label>
+        <label>Genere
+            <input type="text" id="genere" th:field="*{genere}">
+        </label>
+        <label>Anno
+            <input type="text" id="year" th:field="*{movieYear}">
+        </label>
+        <label>Immagine
+            <input type="text" id="imgUrl" th:field="*{imgUrl}">
+        </label>
+
+        <button type="submit" th:text="${movie.movieId != null} ? 'Modifica' : 'Salva'"></button>
+    </form>
+
+</body>
+</html>
